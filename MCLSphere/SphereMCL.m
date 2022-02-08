@@ -21,15 +21,19 @@ for z = 1 : n
     [x1,y1,z1] = SphereGenerator(radius);
     chordL = ChordLength(x0,y0,z0,x1,y1,z1);
     mclArray(end+1) = chordL;
+    x0Array(end + 1) = x0;
+    y0Array(end + 1) = y0;
+    z0Array(end + 1) = z0;
     x1Array(end + 1) = x1;
     y1Array(end + 1) = y1;
     z1Array(end + 1) = z1;
 end
 mu = mean(mclArray)
-sigma = std(mclArray);
+sigma = std(mclArray)
 
 figure(1)
-plot3(x1Array,y1Array,z1Array,'.')
+plot3(x0Array,y0Array,z0Array,'.',x1Array,y1Array,z1Array,'.')
+title('Profile Distribution', 'FontSize', 15);
 
 figure(2)
 a = histogram(mclArray,100)
